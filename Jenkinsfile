@@ -6,7 +6,7 @@ pipeline {
     //两种方式：Poll SCM：定时检查源码变更，如果有更新就checkout最新code下来，然后执行构建动作。
     //cron: 定时构建 周期性进行项目构建，不关心代码是否有变化，到设定的时间即进行构建 分 时 日期 月份 星期
     triggers {
-        */5 * * * *
+        pollSCM '*/5 * * * *'
     }
     //构建超时时间为10分钟，重试次数为3
     options {
@@ -25,6 +25,8 @@ pipeline {
             steps {
                  echo 'build and test'
                  echo '${SONAR_SERVER}'
+                 sh './gradlew build'
+                 sh 'jarName=`./gradlew -q printJarName`'
             }
 
         }
