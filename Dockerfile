@@ -16,9 +16,11 @@ COPY build/libs/dhwang-study-1.0-SNAPSHOT.jar ./app.jar
 #当容器在执行一些命令之前需要做一些数据初始化的工作,可以使用ENTRYPOINT
 #ENTRYPOINT["init-data.sh"]
 #CMD ["redis-server", "a" ,"b"]
+ARG jarName
 
 ENV SPRING_PROFILES_ACTIVE=local
 ENV APP_JAR=app.jar
+
 #ENV NODE_VERSION=7.2.0 NODE_VERSION1=7.2.1
 
 

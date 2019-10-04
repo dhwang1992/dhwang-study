@@ -21,19 +21,22 @@ pipeline {
         choice(name:'PerformMavenRelease',choices:'False\nTrue',description:'desc')
     }
     stages {
-        stage('build and test') {
+        stage('test') {
             steps {
-                 echo 'build and test'
-                 echo '${SONAR_SERVER}'
-                 sh './gradlew build'
-                 sh 'jarName=`./gradlew -q printJarName`'
+                sh './go.sh test'
+            }
+
+        }
+        stage('build') {
+            steps {
+                sh './go.sh build'
             }
 
         }
 
         stage('deploy') {
             steps {
-                echo 'deploy'
+                sh './go.sh deploy'
             }
 
         }
