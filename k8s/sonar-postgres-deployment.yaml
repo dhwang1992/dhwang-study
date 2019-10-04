@@ -27,7 +27,7 @@ spec:
           volumeMounts:
             # This name must match the volumes.name below.
             - name: data-disk
-              mountPath: /var/lib/postgresql/data
+              mountPath: '/var/lib/postgres/'
       volumes:
         - name: data-disk
           gcePersistentDisk:
