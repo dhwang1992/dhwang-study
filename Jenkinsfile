@@ -20,7 +20,7 @@ pipeline {
     parameters {
         choice(name:'PerformMavenRelease',choices:'False\nTrue',description:'desc')
     }
-    states {
+    stages {
         stage('build and test') {
             steps {
                  echo 'build and test'
