@@ -9,10 +9,10 @@ pipeline {
         pollSCM '*/5 * * * *'
     }
     //构建超时时间为10分钟，重试次数为3
-    options {
-        timeout(time:10, unit: 'MINUTES')
-        retry(3)
-    }
+    //options {
+    //    timeout(time:10, unit: 'MINUTES')
+    //    retry(3)
+    //}
     environment {
         SONAR_SERVER = 'http://localhost:9000'
     }

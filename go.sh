@@ -12,8 +12,8 @@ build() {
     echo 'execute go build'
     DOCKER_REGISTRY_SERVER='http://localhost:5000'
     DOCKER_REGISTRY_NAME=$(echo $DOCKER_REGISTRY_SERVER | sed 's~http[s]*://~~g')
-    $DOCKER_USER='admin'
-    $DOCKER_PASSWORD='admin123'
+    DOCKER_USER='admin'
+    DOCKER_PASSWORD='admin123'
     CI_COMMIT_SHA=${GIT_COMMIT:=$(git log -n 1 --pretty=format:'%h')}
     IMAGE_TAG="$CI_COMMIT_SHA"
 
