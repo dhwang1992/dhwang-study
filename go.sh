@@ -9,7 +9,9 @@ test() {
 }
 
 build() {
-    echo 'execute go build $GIT_COMMIT'
+    echo 'execute go build'
+    CI_COMMIT_SHA=${GIT_COMMIT:=$(git log -n 1 --pretty=format:'%h')}
+    IMAGE_TAG="$CI_COMMIT_SHA"
     ./gradlew clean -x test build
     jarName=`./gradlew -q printJarName`
     docker build --build-arg jarName="build/libs/$jarName" -t $APP_NAME:$IMAGE_TAG .
