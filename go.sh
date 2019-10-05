@@ -19,7 +19,7 @@ build() {
 
     ./gradlew clean -x test build
     jarName=`./gradlew -q printJarName`
-    docker build --build-arg jarName="build/libs/$jarName" -t DOCKER_REGISTRY_NAME/$APP_NAME:$IMAGE_TAG .
+    docker build --build-arg jarName="build/libs/$jarName" -t $DOCKER_REGISTRY_NAME/$APP_NAME:$IMAGE_TAG .
 
     # push镜像
     docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD $DOCKER_REGISTRY_SERVER
