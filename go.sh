@@ -9,7 +9,7 @@ test() {
 }
 
 build() {
-    echo 'execute go build'
+    echo 'execute go build $IMAGE_TAG'
     ./gradlew clean -x test build
     jarName=`./gradlew -q printJarName`
     docker build --build-arg jarName="build/libs/$jarName" -t $APP_NAME:$IMAGE_TAG .
