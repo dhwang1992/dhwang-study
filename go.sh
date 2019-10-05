@@ -24,7 +24,7 @@ build() {
     # push镜像
     docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD $DOCKER_REGISTRY_SERVER
     docker push $DOCKER_REGISTRY_NAME/$APP_NAME:$IMAGE_TAG
-    docker rmi DOCKER_REGISTRY_NAME/$APP_NAME:$IMAGE_TAG
+    docker rmi $DOCKER_REGISTRY_NAME/$APP_NAME:$IMAGE_TAG
 }
 
 deploy() {
@@ -34,7 +34,7 @@ deploy() {
     CI_COMMIT_SHA=${GIT_COMMIT:=$(git log -n 1 --pretty=format:'%h')}
     IMAGE_TAG="$CI_COMMIT_SHA"
     ENV=${ENV:=dev}
-    docker run -p 10000:10000 --name $APP_NAME DOCKER_REGISTRY_NAME/$APP_NAME:$IMAGE_TAG
+    docker run -p 10000:10000 --name $APP_NAME $DOCKER_REGISTRY_NAME/$APP_NAME:$IMAGE_TAG
 }
 
 case $1 in
