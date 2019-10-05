@@ -16,7 +16,7 @@ pipeline {
     environment {
         SONAR_SERVER = 'http://localhost:9000'
     }
-    //定义变量执行时，会让其先输入变量，使用变量的话，用${params.PerformMavenRelease}
+    //定义变量执行时，会让其先输入变量，使用变量的话，用${params.PerformMavenRelease} ${SONAR_SERVER}
     //parameters {
     //    choice(name:'PerformMavenRelease',choices:'False\nTrue',description:'desc')
     //}
