@@ -34,7 +34,7 @@ deploy() {
     CI_COMMIT_SHA=${GIT_COMMIT:=$(git log -n 1 --pretty=format:'%h')}
     IMAGE_TAG="$CI_COMMIT_SHA"
     ENV=${ENV:=dev}
-    docker run -p 10000:10000 --name $APP_NAME $DOCKER_REGISTRY_NAME/$APP_NAME:$IMAGE_TAG
+    docker run -d -p 10000:10000 --name $APP_NAME $DOCKER_REGISTRY_NAME/$APP_NAME:$IMAGE_TAG
 }
 
 case $1 in
